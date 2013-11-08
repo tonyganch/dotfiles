@@ -1,12 +1,9 @@
 # Path to oh-my-zsh configuration
 ZSH=$HOME/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
 
 # Theme
 ZSH_THEME="nani"
-
-# Plugins
-plugins=(brew bundler cap gem github node npm nyan osx rails3 rvm)
-source $ZSH/oh-my-zsh.sh
 
 # Vars
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/usr/local/share/npm/bin
@@ -59,6 +56,8 @@ alias gch='git cherry-pick'
 alias gd='git diff'
 alias gl='git log --graph --pretty=format:"%Cgreen%h %Cblue%ar %Creset%s"'
 alias go='git checkout'
+alias gra='git rebase --abort'
+alias grc='git reset --continue'
 alias greset='git reset --hard'
 alias gs='git status'
 function gf() {git commit --fixup="$1"}
@@ -104,3 +103,40 @@ function gz() {
     gzip -c "$1" | wc -c
 }
 
+# Open current directory in a new tab:
+function tab() {
+  local command="cd \\\"$PWD\\\"; clear; "
+  (( $# > 0 )) && command="${command}; $*"
+
+  the_app=$(
+    osascript 2>/dev/null <<EOF
+      tell application "System Events"
+        name of first item of (every process whose frontmost is true)
+      end tell
+EOF
+  )
+
+  [[ "$the_app" == 'Terminal' ]] && {
+    osascript 2>/dev/null <<EOF
+      tell application "System Events"
+        tell process "Terminal" to keystroke "t" using command down
+        tell application "Terminal" to do script "${command}" in front window
+      end tell
+EOF
+  }
+
+  [[ "$the_app" == 'iTerm' ]] && {
+    osascript 2>/dev/null <<EOF
+      tell application "iTerm"
+        set current_terminal to current terminal
+        tell current_terminal
+          launch session "Default Session"
+          set current_session to current session
+          tell current_session
+            write text "${command}"
+          end tell
+        end tell
+      end tell
+EOF
+  }
+}
