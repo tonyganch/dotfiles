@@ -1,0 +1,34 @@
+[user]
+	name = Tony Ganch
+	email = tonyganch@gmail.com
+
+[core]
+	autocrlf = false
+	safecrlf = true
+	quotepath = false
+	excludesfile = /Users/tonyganch/.gitignore
+
+[color]
+	ui = true
+
+[diff]
+	tool = Kaleidoscope
+
+[difftool]
+	prompt = false
+
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[merge]
+	tool = Kaleidoscope
+	# Include summaries of merged commits in newly created merge commit messages
+	# log = true
+
+[mergetool]
+	prompt = false
+
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+
