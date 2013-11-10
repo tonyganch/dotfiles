@@ -1,13 +1,12 @@
-# Path to oh-my-zsh configuration
-ZSH=$HOME/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
 # Theme
 ZSH_THEME="nani"
 
+# Import oh-my-zsh configuration
+ZSH=$HOME/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
 # Vars
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/usr/local/share/npm/bin
-export NODE_PAT=H/usr/local/lib/jsctags:/usr/local/lib/node
 # Make vim the default editor
 export EDITOR="vim"
 # Highlight section titles in manual pages
@@ -22,9 +21,15 @@ alias rvc='rvm current'
 alias dbc='rake db:create'
 alias rake='bundle exec rake'
 
-# Node/NVM
+# NVM
 if [ -s ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
+# Node bin path
+BP=$(which node)
+# Node path
+NP=${NP%bin/node}
+# Modules path
+export NODE_PATH="${NP}lib/node_modules"
 fi
 
 # Encoding
