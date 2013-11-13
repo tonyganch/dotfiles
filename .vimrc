@@ -626,7 +626,8 @@ set nocompatible
     set history=1000
 
     " Save file with root permissions
-    command! W exec 'w !sudo tee % > /dev/null' | e!
+    command! W exec 'w'
+    command! Ws exec 'w !sudo tee % > /dev/null' | e!
 
     " Backspacing settings
         " start     allow backspacing over the start of insert;
