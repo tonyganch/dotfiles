@@ -63,10 +63,10 @@ alias gl='git log --graph --pretty=format:"%Cgreen%h %Cblue%ar %Creset%s"'
 alias go='git checkout'
 alias gra='git rebase --abort'
 alias grc='git reset --continue'
-alias greset='git reset --hard'
 alias gs='git status'
 function gf() {git commit --fixup="$1"}
 function gr() {git rebase -i --autosquash HEAD~"$1"}
+function greset() {git reset --hard HEAD~"$1"}
 
 # Directories
 alias ~='cd'
