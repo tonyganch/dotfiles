@@ -629,6 +629,9 @@ set nocompatible
     command! W exec 'w'
     command! Ws exec 'w !sudo tee % > /dev/null' | e!
 
+    " Run `npm test`
+    nmap <Leader>t :!npm test<CR>
+
     " Backspacing settings
         " start     allow backspacing over the start of insert;
         "           CTRL-W and CTRL-U stop once at the start of insert.
