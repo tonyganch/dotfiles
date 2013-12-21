@@ -78,7 +78,7 @@ set nocompatible
         " JSHint
         Bundle 'git://github.com/walm/jshint.vim.git'
         " JSON
-        " Bundle 'git://github.com/leshill/vim-json.git'
+        Bundle 'git://github.com/leshill/vim-json.git'
     " Perl
         " Bundle 'git://github.com/petdance/vim-perl.git'
     " Ruby/Rails
@@ -88,6 +88,10 @@ set nocompatible
         " Bundle 'git://github.com/tpope/vim-rails.git'
         " Wisely add "end" in ruby, endfunction/endif/more
         " Bundle 'git://github.com/tpope/vim-endwise.git'
+    " Git
+        Bundle 'git://github.com/tpope/vim-fugitive.git'
+    " Markdown
+        Bundle 'git://github.com/plasticboy/vim-markdown.git'
 
     filetype plugin indent on     " required!
 
@@ -350,6 +354,9 @@ set nocompatible
     " Remove the extrafills --------
     " Only available when compiled with the +windows and +folding features
     set fillchars="fold: "
+
+    " Disable markdown folding
+    let g:vim_markdown_folding_disabled=1
 
 " Search
     " While typing a search command, show pattern matches as it is typed
