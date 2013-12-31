@@ -8,9 +8,6 @@
 	quotepath = false
 	excludesfile = /Users/tonyganch/.gitignore
 
-[color]
-	ui = true
-
 [diff]
 	tool = Kaleidoscope
 
