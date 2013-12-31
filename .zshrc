@@ -27,7 +27,7 @@ if [ -s ~/.nvm/nvm.sh ]; then
 # Node bin path
 BP=$(which node)
 # Node path
-NP=${NP%bin/node}
+NP=${BP%bin/node}
 # Modules path
 export NODE_PATH="${NP}lib/node_modules"
 fi
