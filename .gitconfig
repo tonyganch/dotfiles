@@ -6,7 +6,7 @@
 	autocrlf = false
 	safecrlf = true
 	quotepath = false
-	excludesfile = /Users/tonyganch/.gitignore
+	excludesfile = ~/.gitignore
 
 [diff]
 	tool = Kaleidoscope
