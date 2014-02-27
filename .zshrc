@@ -57,13 +57,17 @@ alias :q=exit
 alias g='git'
 alias ga='git add'
 alias gam='git commit --amend'
+alias gb='git branch'
 alias gc='git commit'
 alias gch='git cherry-pick'
 alias gd='git difftool'
+alias gdiff='git diff'
 alias gl='git log --graph --pretty=format:"%Cgreen%h %Cblue%ar %Creset%s"'
 alias go='git checkout'
+alias gpp='git pull -p'
+alias gpsh='git push'
 alias gra='git rebase --abort'
-alias grc='git reset --continue'
+alias grc='git rebase --continue'
 alias gs='git status'
 function gf() {git commit --fixup="$1"}
 function gr() {git rebase -i --autosquash HEAD~"$1"}
