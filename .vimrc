@@ -46,6 +46,8 @@ set nocompatible
         Bundle 'git://github.com/tpope/vim-surround.git'
         " Automatic closing of quotes, parenthesis, brackets, etc.
         Bundle 'git://github.com/vim-scripts/delimitMate.vim.git'
+        " EditorConfig
+        Bundle 'git://github.com/editorconfig/editorconfig-vim.git'
     " HTML/HAML
         " HTML5 omnicomplete and syntax
         Bundle 'git://github.com/othree/html5.vim.git'
