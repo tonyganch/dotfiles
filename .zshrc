@@ -77,6 +77,7 @@ function greset() {git reset --hard HEAD~"$1"}
 alias ~='cd'
 alias ~gh='cd ~/GitHub'
 alias ~comb='cd ~/GitHub/csscomb'
+alias ~sho='cd ~/GitHub/shower'
 alias ~forks='cd ~/GitHub/forks'
 alias ~node='cd ~/GitHub/node'
 alias ~rails='cd ~/GitHub/rails'
