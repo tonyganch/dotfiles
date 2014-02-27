@@ -22,6 +22,7 @@ alias dbc='rake db:create'
 alias rake='bundle exec rake'
 
 # NVM
+alias nom='npm'
 if [ -s ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
 # Node bin path
