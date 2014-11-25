@@ -101,9 +101,6 @@ set nocompatible
     " Show line numbers
     set number
 
-    " Show line numbers relative to current line
-    set relativenumber
-
     " Character encoding used inside Vim
     " Only available when compiled with the +multi_byte feature
     set encoding=utf-8
@@ -385,6 +382,20 @@ set nocompatible
 " Шорткаты
     let mapleader = ","
 
+    " ,m
+        " Toggle mouse support in Normal mode
+        set mouse=
+        function! ToggleMouse()
+          if &mouse == 'a'
+            set mouse=
+            echo "Mouse usage disabled"
+          else
+            set mouse=a
+            echo "Mouse usage enabled"
+          endif
+        endfunction
+        nnoremap <leader>m :call ToggleMouse()<CR>
+
     " ,r
         " Find and replace in all open buffers
         " See http://vim.wikia.com/wiki/VimTip382
@@ -432,6 +443,20 @@ set nocompatible
         endfunction
         map <Leader>nm :call ToogleRelativeNumber()<cr>
 
+    " ,g
+        " Toggle GUI elements
+        " Only available when compiled with GUI enabled
+        function! ToggleGUINoise()
+          if &go==''
+            exec('se go=mTrL')
+            echo "Show GUI elements"
+          else
+            exec('se go=')
+            echo "Show no GUI elements"
+          endif
+        endfunction
+        map <Leader>g <Esc>:call ToggleGUINoise()<cr>
+
     " ,f
         " Fast grep
         " Recursive search in current directory for matches with current word
@@ -453,6 +478,10 @@ set nocompatible
 
     " Y from cursor position to the end of line
         nnoremap Y y$
+
+    " Pasting with correct indention
+        " nmap p p=`]
+        " nmap P P=`[
 
     " Disable <Arrow keys>
         inoremap <Up> <NOP>
@@ -532,6 +561,10 @@ set nocompatible
         " camelCase => camel_case
         vnoremap <silent> <Leader>c :s/\v\C(([a-z]+)([A-Z]))/\2_\l\3/g<CR>
 
+    " <Space><Space>
+        " Double space to ". "
+        " imap <Space><Space> . 
+
     " ,ts
         " Fix trailing white space
         map <leader>ts :%s/\s\+$//e<CR>
@@ -553,6 +586,13 @@ set nocompatible
         nnoremap <Leader>u gUiw
         inoremap <Leader>u <esc>gUiwea
 
+    " В коммандном режиме разрешить прыгать в конец и начало строки,
+    " как в консоли
+        cnoremap <c-e> <end>
+        imap     <c-e> <c-o>$
+        cnoremap <c-a> <home>
+        imap     <c-a> <c-o>^
+
     " ,b
         " In Visual mode exec git blame with selected text
         vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
@@ -560,6 +600,10 @@ set nocompatible
     " ,w
         " Jump to next split
         map <Leader>w <C-w>w
+
+    " Ctrl+s
+        map <C-s> <esc>:w<CR>
+        imap <C-s> <esc>:w<CR>
 
     " ,n
         " Edit another file in the same directory with the current one
@@ -573,6 +617,10 @@ set nocompatible
         " inoremap {<CR> {<CR>}<Esc>O
         " inoremap (<CR> (<CR>)<Esc>O
         " inoremap [<CR> [<CR>]<Esc>O
+
+    " Fold with space
+        " nnoremap <Space> za
+        " vnoremap <Space> zf
 
     " Switch tabs with <Tab>
         nmap <Tab> gt
@@ -592,6 +640,7 @@ set nocompatible
 
     " Run `npm test`
     nmap <Leader>t :!npm test<CR>
+    autocmd Filetype json setlocal ts=2 sts=2 sw=2
 
     " Backspacing settings
         " start     allow backspacing over the start of insert;
@@ -663,4 +712,12 @@ set nocompatible
         " Use arrows instead of + ~ chars when displaying directories
         let NERDTreeDirArrows=1
         let NERDTreeBookmarksFile= $HOME . '/.vim/.NERDTreeBookmarks'
+
+    " UltiSnips
+        let g:UltiSnipsExpandTrigger="<tab>"
+        let g:UltiSnipsJumpForwardTrigger="<tab>"
+        let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+    " VimWiki
+        let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/'}]
 
