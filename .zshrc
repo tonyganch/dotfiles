@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # Vars
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/usr/local/share/npm/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/usr/local/share/npm/bin:/Users/tonyganch/Stash/depot_tools:$PATH
 # Make vim the default editor
 export EDITOR="vim"
 # Highlight section titles in manual pages
@@ -69,6 +69,7 @@ alias gpsh='git push origin'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
 alias gs='git status'
+alias gcb='git rev-parse --abbrev-ref HEAD'
 function gf() {git commit --fixup="$1"}
 function gr() {git rebase -i --autosquash HEAD~"$1"}
 function greset() {git reset --hard HEAD~"$1"}
@@ -83,11 +84,11 @@ alias ~node='cd ~/GitHub/node'
 alias ~rails='cd ~/GitHub/rails'
 alias ~tg='cd ~/GitHub/tg'
 
-# Genestack
-source ~/.gsrc
+# Yandex
+source ~/.yarc
 
 # Safe (re)moving
-alias rm='rm -i'
+# alias rm='rm -i'
 alias mv='mv -i'
 
 # Functions
