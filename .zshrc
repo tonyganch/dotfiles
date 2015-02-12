@@ -7,7 +7,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Vars
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/usr/local/share/npm/bin:/Users/tonyganch/Stash/depot_tools:$PATH
+export PATH=/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/usr/local/share/npm/bin:/Users/tonyganch/Stash/depot_tools:$PATH
 # Make vim the default editor
 export EDITOR="vim"
 # Highlight section titles in manual pages
