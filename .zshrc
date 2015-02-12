@@ -74,6 +74,7 @@ alias gcb='git rev-parse --abbrev-ref HEAD'
 function gf() {git commit --fixup="$1"}
 function gr() {git rebase -i --autosquash HEAD~"$1"}
 function greset() {git reset --hard HEAD~"$1"}
+function gpr() {git fetch origin pull/"$1"/head:pr/"$1" && git checkout pr/"$1"}
 
 # Directories
 alias ~='cd'
