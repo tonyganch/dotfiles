@@ -143,7 +143,7 @@ EOF
           launch session "Default Session"
           set current_session to current session
           tell current_session
-            write text "${command}"
+            write text "${command}\n"
           end tell
         end tell
       end tell
