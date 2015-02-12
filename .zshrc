@@ -89,10 +89,6 @@ alias ~tg='cd ~/GitHub/tg'
 # Yandex
 source ~/.yarc
 
-# Safe (re)moving
-# alias rm='rm -i'
-alias mv='mv -i'
-
 # Functions
 
 # Create a new directory and enter it
