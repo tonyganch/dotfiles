@@ -89,6 +89,16 @@ alias ~tg='cd ~/GitHub/tg'
 # Yandex
 source ~/.yarc
 
+# AnyBar
+
+export ANYBAR_PORT=1738
+function anybar() { echo -n $1 | nc -4u -w0 localhost ${2:-1738}; }
+alias ~ok='anybar quit'
+function ~any() {
+    export ANYBAR_PORT=$(($ANYBAR_PORT + 1))
+    open /Applications/AnyBar.app
+}
+
 # Functions
 
 # Create a new directory and enter it
