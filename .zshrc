@@ -60,21 +60,21 @@ alias ga='git add'
 alias gam='git commit --amend'
 alias gb='git branch'
 alias gc='git commit'
+alias gcb='git rev-parse --abbrev-ref HEAD'
 alias gch='git cherry-pick'
 alias gd='git difftool'
 alias gdiff='git diff'
 alias gl='git log --graph --pretty=format:"%Cgreen%h %Cblue%ar %Creset%s"'
 alias go='git checkout'
-alias gpp='git pull -p'
-alias gpsh='git push origin'
+alias gpl='git pull origin `git rev-parse --abbrev-ref HEAD`'
+alias gps='git push origin `git rev-parse --abbrev-ref HEAD`'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
 alias gs='git status'
-alias gcb='git rev-parse --abbrev-ref HEAD'
 function gf() {git commit --fixup="$1"}
+function gpr() {git fetch origin pull/"$1"/head:pr/"$1" && git checkout pr/"$1"}
 function gr() {git rebase -i --autosquash HEAD~"$1"}
 function greset() {git reset --hard HEAD~"$1"}
-function gpr() {git fetch origin pull/"$1"/head:pr/"$1" && git checkout pr/"$1"}
 
 # Directories
 alias ~='cd'
