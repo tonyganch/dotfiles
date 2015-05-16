@@ -42,12 +42,10 @@ alias src='source ~/.zshrc'
 
 # tmux
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-alias tm='tmux'
-alias tmn='tmux new'
-alias tma='tmux attach -t'
-alias tmk='tmux kill-session -t'
-alias tmo='tmuxinator open'
-alias tms='mux start'
+alias t='tmux'
+function ta() {tmux attach -t $1}
+function tk() {tmux kill-session -t $1}
+function tn() {tmux new -s $1}
 
 # Vim
 alias v='vim'
