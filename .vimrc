@@ -110,6 +110,8 @@ set nocompatible
         Bundle 'git://github.com/tpope/vim-fugitive.git'
     " Markdown
         " Bundle 'git://github.com/plasticboy/vim-markdown.git'
+    " Other
+        Bundle 'scrooloose/syntastic'
 
     filetype plugin indent on     " required!
 
@@ -683,6 +685,10 @@ set nocompatible
         " Use arrows instead of + ~ chars when displaying directories
         let NERDTreeDirArrows=1
         let NERDTreeBookmarksFile= $HOME . '/.vim/.NERDTreeBookmarks'
+
+    " Syntastic
+    let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+    no <leader>sc :SyntasticCheck<CR>
 
     " Airline
     let g:airline_powerline_fonts = 1
