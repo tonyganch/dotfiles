@@ -686,5 +686,8 @@ set nocompatible
     let g:syntastic_javascript_checkers = ['jshint', 'jscs']
     no <leader>sc :SyntasticCheck<CR>
 
+    " Vim Surround
+    nmap <leader>q cs"'
+
     " Airline
     let g:airline_powerline_fonts = 1
