@@ -683,25 +683,26 @@ set nocompatible
         let NERDTreeBookmarksFile= $HOME . '/.vim/.NERDTreeBookmarks'
 
     " Syntastic
-    let g:syntastic_javascript_checkers = ['jshint', 'jscs']
-    no <leader>sc :SyntasticCheck<CR>
+        let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+        no <leader>sc :SyntasticCheck<CR>
 
     " Vim Surround
-    nmap <leader>q cs"'
+        nmap <leader>q cs"'
 
     " Airline
-    " Default sections:
-    " let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'capslock', 'iminsert'])
-    " let g:airline_section_b = airline#section#create(['hunks', 'branch'])
-    " let g:airline_section_c = airline#section#create(['%<', 'file', spc, 'readonly'])
-    " let g:airline_section_gutter = airline#section#create(['%='])
-    " let g:airline_section_x = airline#section#create_right(['tagbar', 'filetype'])
-    " let g:airline_section_y = airline#section#create_right(['ffenc'])
-    " let g:airline_section_z = airline#section#create(['windowswap', '%3p%%'.spc, 'linenr', ':%3v '])
-    " let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace'])
-    let g:airline_powerline_fonts = 1
-    function! AirlineInit()
-        let g:airline_section_z = airline#section#create(['%3.3(%c%) : %3.9(%l/%L%)'])
-        let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace', '%m'])
-    endfunction
-    autocmd User AirlineAfterInit call AirlineInit()
+        let g:airline_powerline_fonts = 1
+
+        " Sections. The defaults are:
+        " let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'capslock', 'iminsert'])
+        " let g:airline_section_b = airline#section#create(['hunks', 'branch'])
+        " let g:airline_section_c = airline#section#create(['%<', 'file', spc, 'readonly'])
+        " let g:airline_section_gutter = airline#section#create(['%='])
+        " let g:airline_section_x = airline#section#create_right(['tagbar', 'filetype'])
+        " let g:airline_section_y = airline#section#create_right(['ffenc'])
+        " let g:airline_section_z = airline#section#create(['windowswap', '%3p%%'.spc, 'linenr', ':%3v '])
+        " let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace'])
+        function! AirlineInit()
+            let g:airline_section_z = airline#section#create(['%3.3(%c%) : %3.9(%l/%L%)'])
+            let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace', '%m'])
+        endfunction
+        autocmd User AirlineAfterInit call AirlineInit()
