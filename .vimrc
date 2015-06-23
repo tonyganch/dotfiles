@@ -159,7 +159,7 @@ set nocompatible
     " set scrolljump=5
 
     " Minimal number of lines to keep above and below the cursor
-    " Typewriter mode = keep current line in the center 
+    " Typewriter mode = keep current line in the center
     set scrolloff=999
 
     " Always show tabs
@@ -289,14 +289,14 @@ set nocompatible
 
     " Content of the status line
     " Only available when compiled with the +statusline feature
-    set statusline=\ 
+    set statusline=\
     " Buffer number
-    set statusline+=%n:\ 
+    set statusline+=%n:\
     " File name
     set statusline+=%t
     " Modified flag
     set statusline+=%m
-    set statusline+=\ \ 
+    set statusline+=\ \
     " Paste mode flag
     set statusline+=%{&paste?'[paste]\ ':''}
     " File encoding
@@ -624,7 +624,7 @@ set nocompatible
     " Load previous session
         " Only available when compiled with the +viminfo feature
         set viminfo='10,\"100,:20,%,n~/.viminfo
-        " Set cursor to its last position 
+        " Set cursor to its last position
         au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
     " AutoReload .vimrc
