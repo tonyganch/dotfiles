@@ -116,9 +116,6 @@ set nocompatible
     filetype plugin indent on     " required!
 
 " Interface
-    " Show line numbers
-    set number
-
     " Show line numbers relative to current line
     set relativenumber
 
