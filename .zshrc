@@ -6,6 +6,9 @@ ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Import airline promptline
+source ~/.airline-prompt.sh
+
 # Vars
 export PATH=/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/usr/local/share/npm/bin:/Users/tonyganch/Stash/depot_tools:$PATH
 # Make vim the default editor
