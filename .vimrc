@@ -79,7 +79,7 @@ set nocompatible
         " Better CSS indent
         Bundle 'git://github.com/miripiruni/vim-better-css-indent.git'
         " CSScomb
-        Bundle 'git://github.com/csscomb/csscomb-for-vim.git'
+        Bundle 'csscomb/vim-csscomb'
         " Stylus support
         Bundle 'git://github.com/wavded/vim-stylus.git'
     " JavaScript
