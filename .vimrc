@@ -48,6 +48,12 @@ set nocompatible
         Bundle 'git://github.com/vim-scripts/delimitMate.vim.git'
         " EditorConfig
         Bundle 'git://github.com/editorconfig/editorconfig-vim.git'
+        " Airline status bar
+        Bundle 'bling/vim-airline'
+        " Airline tmux status line
+        Bundle 'edkolev/tmuxline.vim'
+        " Airline promptline
+        Bundle 'edkolev/promptline.vim'
     " HTML/HAML
         " HTML5 omnicomplete and syntax
         Bundle 'git://github.com/othree/html5.vim.git'
@@ -665,3 +671,5 @@ set nocompatible
         let NERDTreeDirArrows=1
         let NERDTreeBookmarksFile= $HOME . '/.vim/.NERDTreeBookmarks'
 
+    " Airline
+    let g:airline_powerline_fonts = 1
