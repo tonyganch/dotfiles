@@ -84,7 +84,7 @@ set nocompatible
         Bundle 'git://github.com/wavded/vim-stylus.git'
     " JavaScript
         " Vastly improved vim's javascript indentation
-        Bundle 'git://github.com/pangloss/vim-javascript.git'
+        "Bundle 'git://github.com/pangloss/vim-javascript.git'
         " Syntax for jQuery keywords and css selectors
         Bundle 'git://github.com/itspriddle/vim-jquery.git'
         " CoffeeScript support
@@ -93,6 +93,8 @@ set nocompatible
         Bundle 'git://github.com/walm/jshint.vim.git'
         " JSON
         "Bundle 'git://github.com/leshill/vim-json.git'
+        " ES6 support
+        Bundle 'git://github.com/othree/yajs.vim.git'
     " Perl
         " Bundle 'git://github.com/petdance/vim-perl.git'
     " Ruby/Rails
