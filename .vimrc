@@ -104,6 +104,8 @@ set nocompatible
         " Bundle 'git://github.com/tpope/vim-rails.git'
         " Wisely add "end" in ruby, endfunction/endif/more
         " Bundle 'git://github.com/tpope/vim-endwise.git'
+    " Scala
+        Bundle 'scala.vim'
     " Git
         Bundle 'git://github.com/tpope/vim-fugitive.git'
     " Markdown
@@ -632,6 +634,9 @@ set nocompatible
     if has("autocmd")
         autocmd! bufwritepost .vimrc source $MYVIMRC
     endif
+
+    " Set syntax highlighting for different file types
+    autocmd BufRead,BufNewFile *.scala set filetype=scala
 
     " Go to last file(s) if invoked without arguments
         " http://vimcastsim.wikia.com/wiki/Open_the_last_edited_file
