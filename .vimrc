@@ -48,12 +48,18 @@ set nocompatible
         Bundle 'git://github.com/vim-scripts/delimitMate.vim.git'
         " EditorConfig
         Bundle 'git://github.com/editorconfig/editorconfig-vim.git'
+        " Unload all buffers but the current one
+        Bundle 'git://github.com/vim-scripts/BufOnly.vim.git'
         " Airline status bar
         Bundle 'bling/vim-airline'
         " Airline tmux status line
         Bundle 'edkolev/tmuxline.vim'
         " Airline promptline
         Bundle 'edkolev/promptline.vim'
+        " CtrlP
+        Bundle 'kien/ctrlp.vim'
+        " CtrlSpace
+        Bundle 'szw/vim-ctrlspace'
     " HTML/HAML
         " HTML5 omnicomplete and syntax
         Bundle 'git://github.com/othree/html5.vim.git'
