@@ -691,6 +691,7 @@ set nocompatible
 
     " Airline
         let g:airline_powerline_fonts = 1
+        let g:airline#extensions#tmuxline#enabled = 1
 
         " Sections. The defaults are:
         " let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'capslock', 'iminsert'])
