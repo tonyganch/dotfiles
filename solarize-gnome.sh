@@ -14,14 +14,14 @@ case "$1" in
         PALETTE="\
 #070736364242:`#black`\
 #E1E161612626:`#red`\
-#858599990000:`#green`\
+#8E8EA1A11E1E:`#green`\
 #B5B589890000:`#yellow`\
 #26268B8BD2D2:`#blue`\
 #D3D336368282:`#magenta`\
 #2A2AA1A19898:`#cyan`\
 #EEEEE8E8D5D5:`#white`\
 #00002B2B3636:`#bright black`\
-#CBCB4B4B1616:`#bright red`\
+#F8F85E5E2C2C:`#bright red`\
 #58586E6E7575:`#bright green`\
 #65657B7B8383:`#bright yellow`\
 #838394949696:`#bright blue`\
