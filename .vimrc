@@ -38,8 +38,8 @@ set nocompatible
         " Bundle 'git://github.com/wincent/Command-T.git'
         " Shows 'Nth match out of M' at every search
         Bundle 'git://github.com/vim-scripts/IndexedSearch.git'
-        " RegExp search
-        Bundle 'git://github.com/mileszs/ack.vim.git'
+        " Ag, replace grep and ack
+        Bundle 'rking/ag.vim'
         " Provides easy code commenting
         " Bundle 'git://github.com/scrooloose/nerdcommenter.git'
         " Mappings to easily delete, change and add surroundings in pairs
