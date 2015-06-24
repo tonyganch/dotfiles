@@ -52,8 +52,7 @@ function __promptline_vcs_branch {
 
   # git
   if hash git 2>/dev/null; then
-    if branch=$( { git symbolic-ref --quiet HEAD || git rev-parse --short HEAD; } 2>/dev/null ); then
-      branch=${branch##*/}
+    if branch=$( { gcb } 2>/dev/null ); then
       printf "%s" "${branch_symbol}${branch:-unknown}"
       return
     fi
@@ -162,7 +161,7 @@ function __promptline {
   local b_fg="${wrap}38;5;11${end_wrap}"
   local b_bg="${wrap}48;5;7${end_wrap}"
   local b_sep_fg="${wrap}38;5;7${end_wrap}"
-  local c_fg="${wrap}38;5;238${end_wrap}"
+  local c_fg="${wrap}38;5;240${end_wrap}"
   local c_bg="${wrap}48;5;222${end_wrap}"
   local c_sep_fg="${wrap}38;5;222${end_wrap}"
   local warn_fg="${wrap}38;5;15${end_wrap}"
