@@ -1,0 +1,146 @@
+# Import oh-my-zsh configuration
+ZSH=$HOME/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Import airline promptline
+source ~/.airline-prompt.sh
+
+# Vars
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/home/tonyganch/Stash/depot_tools:$PATH
+# Make vim the default editor
+export EDITOR="vim"
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="$ORANGE"
+export TERM=xterm-256color
+
+# Encoding
+export LC_ALL="en_US.UTF-8"
+
+# Source configs
+alias src='source ~/.zshrc'
+
+# tmux
+alias t='tmux'
+alias tls='tmux ls'
+function ta() {tmux attach -t $1}
+function tk() {tmux kill-session -t $1}
+function tn() {tmux new -s $1}
+
+# Vim
+alias v='vim'
+alias zs='vim ~/.zshrc'
+alias :q=exit
+
+# Git
+alias g='git'
+alias ga='git add'
+alias gam='git commit --amend'
+alias gb='git branch'
+alias gc='git commit'
+alias gcb='git rev-parse --abbrev-ref HEAD'
+alias gch='git cherry-pick'
+alias gd='git difftool'
+alias gdiff='git diff'
+alias gl='git log --graph --pretty=format:"%Cgreen%h %Cblue%ar %Creset%s"'
+alias go='git checkout'
+alias gpl='git pull origin `git rev-parse --abbrev-ref HEAD`'
+alias gps='git push origin `git rev-parse --abbrev-ref HEAD`'
+alias gra='git rebase --abort'
+alias grc='git rebase --continue'
+alias gs='git status'
+function gf() {git commit --fixup="$1"}
+function gpr() {git fetch origin pull/"$1"/head:pr/"$1" && git checkout pr/"$1"}
+function gr() {git rebase -i --autosquash HEAD~"$1"}
+function greset() {git reset --hard HEAD~"$1"}
+
+# Yandex
+source ~/.yarc
+
+# Todo.txt
+source ~/todo.txt/todo_completion
+alias td='~/todo.txt/todo.sh -d ~/todo.txt/todo.cfg'
+alias tdls='~/todo.txt/todo.sh -d ~/todo.txt/todo.cfg -c@+ ls'
+_todoElsewhere() {
+    local _todo_sh='~/todo.txt/todo.sh'
+    _todo "$@"
+}
+compctl -f _todo td
+
+# Functions
+
+# Create a new directory and enter it
+function mkd() {
+    mkdir -p "$@" && cd "$@"
+}
+
+# Create a data URL from a file
+function dataurl() {
+    local mimeType=$(file -b --mime-type "$1")
+    if [[ $mimeType == text/* ]]; then
+        mimeType="${mimeType};charset=utf-8"
+    fi
+    echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
+}
+
+# Get gzipped file size
+function gz() {
+    echo "orig size (bytes): "
+    cat "$1" | wc -c
+    echo "gzipped size (bytes): "
+    gzip -c "$1" | wc -c
+}
+
+# Open current directory in a new tab:
+function tab() {
+  local command="cd \\\"$PWD\\\"; clear; "
+  (( $# > 0 )) && command="${command}; $*"
+
+  the_app=$(
+    osascript 2>/dev/null <<EOF
+      tell application "System Events"
+        name of first item of (every process whose frontmost is true)
+      end tell
+EOF
+  )
+
+  [[ "$the_app" == 'Terminal' ]] && {
+    osascript 2>/dev/null <<EOF
+      tell application "System Events"
+        tell process "Terminal" to keystroke "t" using command down
+        tell application "Terminal" to do script "${command}" in front window
+      end tell
+EOF
+  }
+
+  [[ "$the_app" == 'iTerm' ]] && {
+    osascript 2>/dev/null <<EOF
+      tell application "iTerm"
+        set current_terminal to current terminal
+        tell current_terminal
+          launch session "Default Session"
+          set current_session to current session
+          tell current_session
+            write text "${command}\n"
+          end tell
+        end tell
+      end tell
+EOF
+  }
+}
+
+# Print color palette:
+function palette() {
+    line="\u2588\u2588\u2588\u2588\u2588\u2588\u2588"
+    echo ""
+    function color() {
+        for i in {000..255}; do
+            printf "\x1b[38;5;10m$i "
+            printf "\x1b[38;5;${i}m$line\n"
+        done
+    }
+    function columns() {
+        awk '{if(NR%8){printf "%s ",$0 }else {printf "%s\n",$0}} '
+    }
+    color | columns
+}
