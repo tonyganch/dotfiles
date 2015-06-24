@@ -7,7 +7,7 @@ source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.airline-prompt.sh
 
 # Vars
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/home/tonyganch/Stash/depot_tools:$PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/home/tonyganch/ya/depot_tools:$PATH
 # Make vim the default editor
 export EDITOR="vim"
 # Highlight section titles in manual pages
