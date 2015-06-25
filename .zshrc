@@ -73,6 +73,7 @@ alias gra='git rebase --abort'
 alias grc='git rebase --continue'
 alias gs='git status'
 function gf() {git commit --fixup="$1"}
+function gg() {git grep --break --heading -i -I -n "$1" -- "$2"}
 function gpr() {git fetch origin pull/"$1"/head:pr/"$1" && git checkout pr/"$1"}
 function gr() {git rebase -i --autosquash HEAD~"$1"}
 function greset() {git reset --hard HEAD~"$1"}
