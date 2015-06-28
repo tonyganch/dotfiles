@@ -52,7 +52,7 @@ function tk() {tmux kill-session -t $1}
 function tn() {tmux new -s $1}
 
 # Vim
-alias v='vim'
+alias v='VIMRUNTIME=$HOME/vim/runtime $HOME/vim/src/vim "$@"'
 alias zs='vim ~/GitHub/tg/dotfiles/.zshrc'
 alias :q=exit
 
