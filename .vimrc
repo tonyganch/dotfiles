@@ -19,99 +19,75 @@ set nocompatible
     filetype off     " required!
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
-    Bundle 'git://github.com/gmarik/vundle.git'
+    Plugin 'gmarik/vundle'
 
     " Bundles
     " NOTE: comments after Bundle command are not allowed...
     "
-    " Libs
-        " Play nicely with tmux
-        " Bundle 'git://github.com/sjl/vitality.vim.git'
     " Interface
         " Solarized Colorscheme
-        Bundle 'git://github.com/altercation/vim-colors-solarized.git'
+        Plugin 'altercation/vim-colors-solarized'
         " A tree explorer plugin
-        Bundle 'git://github.com/scrooloose/nerdtree.git'
+        Plugin 'scrooloose/nerdtree'
         " Perform all your vim insert mode completions with Tab
-        Bundle 'git://github.com/ervandew/supertab.git'
-        " Command-T
-        " Bundle 'git://github.com/wincent/Command-T.git'
+        Plugin 'ervandew/supertab'
         " Shows 'Nth match out of M' at every search
-        Bundle 'git://github.com/vim-scripts/IndexedSearch.git'
+        Plugin 'vim-scripts/IndexedSearch'
         " Ag, replace grep and ack
-        Bundle 'rking/ag.vim'
-        " Provides easy code commenting
-        " Bundle 'git://github.com/scrooloose/nerdcommenter.git'
+        Plugin 'rking/ag.vim'
         " Mappings to easily delete, change and add surroundings in pairs
-        Bundle 'git://github.com/tpope/vim-surround.git'
+        Plugin 'tpope/vim-surround'
         " Automatic closing of quotes, parenthesis, brackets, etc.
-        Bundle 'git://github.com/vim-scripts/delimitMate.vim.git'
+        Plugin 'vim-scripts/delimitMate.vim'
         " EditorConfig
-        Bundle 'git://github.com/editorconfig/editorconfig-vim.git'
+        Plugin 'editorconfig/editorconfig-vim'
         " Unload all buffers but the current one
-        Bundle 'git://github.com/vim-scripts/BufOnly.vim.git'
+        Plugin 'vim-scripts/BufOnly.vim'
         " Airline status bar
-        Bundle 'bling/vim-airline'
+        Plugin 'bling/vim-airline'
         " Airline tmux status line
-        Bundle 'edkolev/tmuxline.vim'
+        Plugin 'edkolev/tmuxline.vim'
         " Airline promptline
-        Bundle 'edkolev/promptline.vim'
+        Plugin 'edkolev/promptline.vim'
         " CtrlP
-        Bundle 'kien/ctrlp.vim'
+        Plugin 'kien/ctrlp.vim'
         " CtrlSpace
-        Bundle 'szw/vim-ctrlspace'
+        Plugin 'szw/vim-ctrlspace'
     " HTML/HAML
         " HTML5 omnicomplete and syntax
-        Bundle 'git://github.com/othree/html5.vim.git'
+        Plugin 'othree/html5.vim'
         " Runtime files for Haml and Sass
-        Bundle 'git://github.com/tpope/vim-haml.git'
+        Plugin 'tpope/vim-haml'
         " Jade support
-        Bundle 'git://github.com/vim-scripts/jade.vim.git'
-        " Slim support
-        Bundle 'git://github.com/slim-template/vim-slim.git'
+        Plugin 'vim-scripts/jade.vim'
     " CSS/LESS
         " CSS3 syntax support
-        Bundle 'git://github.com/hail2u/vim-css3-syntax.git'
+        Plugin 'hail2u/vim-css3-syntax'
         " Highlight colors in css files
-        Bundle 'git://github.com/ap/vim-css-color.git'
+        Plugin 'ap/vim-css-color'
         " LESS support
-        Bundle 'git://github.com/groenewege/vim-less.git'
+        Plugin 'groenewege/vim-less'
         " Better CSS indent
-        Bundle 'git://github.com/miripiruni/vim-better-css-indent.git'
+        Plugin 'miripiruni/vim-better-css-indent'
         " CSScomb
-        Bundle 'csscomb/vim-csscomb'
+        Plugin 'csscomb/vim-csscomb'
         " Stylus support
-        Bundle 'git://github.com/wavded/vim-stylus.git'
+        Plugin 'wavded/vim-stylus'
     " JavaScript
-        " Vastly improved vim's javascript indentation
-        "Bundle 'git://github.com/pangloss/vim-javascript.git'
-        " Syntax for jQuery keywords and css selectors
-        Bundle 'git://github.com/itspriddle/vim-jquery.git'
         " CoffeeScript support
-        Bundle 'git://github.com/kchmck/vim-coffee-script.git'
+        Plugin 'kchmck/vim-coffee-script'
         " JSHint
-        Bundle 'git://github.com/walm/jshint.vim.git'
-        " JSON
-        "Bundle 'git://github.com/leshill/vim-json.git'
+        Plugin 'walm/jshint.vim'
         " ES6 support
-        Bundle 'git://github.com/othree/yajs.vim.git'
-    " Perl
-        " Bundle 'git://github.com/petdance/vim-perl.git'
-    " Ruby/Rails
-        " Editing and compiling Ruby
-        " Bundle 'git://github.com/vim-ruby/vim-ruby.git'
-        " Rails support
-        " Bundle 'git://github.com/tpope/vim-rails.git'
-        " Wisely add "end" in ruby, endfunction/endif/more
-        " Bundle 'git://github.com/tpope/vim-endwise.git'
+        Plugin 'othree/yajs.vim'
+        " JSON
+        Plugin 'elzr/vim-json'
     " Scala
-        Bundle 'scala.vim'
+        Plugin 'scala.vim'
     " Git
-        Bundle 'git://github.com/tpope/vim-fugitive.git'
-    " Markdown
-        " Bundle 'git://github.com/plasticboy/vim-markdown.git'
+        Plugin 'tpope/vim-fugitive'
     " Other
-        Bundle 'scrooloose/syntastic'
+        Plugin 'scrooloose/syntastic'
 
     filetype plugin indent on     " required!
 
