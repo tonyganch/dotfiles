@@ -53,6 +53,8 @@ set nocompatible
         Plugin 'kien/ctrlp.vim'
         " CtrlSpace
         Plugin 'szw/vim-ctrlspace'
+        " Graphic vim undo tree
+        Plugin 'sjl/gundo.vim'
     " HTML/HAML
         " HTML5 omnicomplete and syntax
         Plugin 'othree/html5.vim'
@@ -683,3 +685,8 @@ set nocompatible
             let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace', '%m'])
         endfunction
         autocmd User AirlineAfterInit call AirlineInit()
+
+    " Gundo
+        " Force the preview window below current windows instead of below the
+        " graph.
+        let g:gundo_preview_bottom = 1
