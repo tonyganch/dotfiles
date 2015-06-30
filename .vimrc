@@ -78,6 +78,8 @@ set nocompatible
         Plugin 'scrooloose/syntastic'
         " Solarized Colorscheme
         Plugin 'altercation/vim-colors-solarized'
+        " Show git changes in gutter
+        Plugin 'airblade/vim-gitgutter'
         " CtrlSpace
         Plugin 'szw/vim-ctrlspace'
         " Git
@@ -613,6 +615,8 @@ set nocompatible
     " Airline
         let g:airline_powerline_fonts = 1
         let g:airline#extensions#tmuxline#enabled = 1
+        let g:airline#extensions#hunks#enabled = 1
+        let g:airline#extensions#hunks#non_zero_only = 0
 
         " Sections. The defaults are:
         " let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'capslock', 'iminsert'])
@@ -624,6 +628,8 @@ set nocompatible
         " let g:airline_section_z = airline#section#create(['windowswap', '%3p%%'.spc, 'linenr', ':%3v '])
         " let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace'])
         function! AirlineInit()
+            let g:airline_section_b = airline#section#create(['hunks'])
+            let g:airline_section_y = ""
             let g:airline_section_z = airline#section#create(['%3.3(%c%) : %3.9(%l/%L%)'])
             let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace', '%m'])
         endfunction
