@@ -40,8 +40,8 @@ alias gb='git branch'
 alias gc='git commit'
 alias gcb='git rev-parse --abbrev-ref HEAD'
 alias gch='git cherry-pick'
-alias gd='git difftool'
-alias gdiff='git diff'
+alias gd='git diff'
+alias gdt='git difftool'
 alias gl='git log --graph --pretty=format:"%Cgreen%h %Cblue%ar %Creset%s"'
 alias go='git checkout'
 alias gpl='git pull origin `git rev-parse --abbrev-ref HEAD`'
@@ -54,6 +54,7 @@ function gg() {git grep --break --heading -i -I -n "$1" -- "$2"}
 function gpr() {git fetch origin pull/"$1"/head:pr/"$1" && git checkout pr/"$1"}
 function gr() {git rebase -i --autosquash HEAD~"$1"}
 function greset() {git reset --hard HEAD~"$1"}
+function gst() {git stash save "$1"}
 
 # Yandex
 source ~/.yarc
