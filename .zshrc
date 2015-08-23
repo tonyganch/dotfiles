@@ -18,6 +18,12 @@ export LESS_TERMCAP_md="$ORANGE"
 # Tomcat
 export CATALINA_HOME=/Users/tonyganch/Servers/apache-tomcat-7.0.41
 
+# Initialization for FDK command line tools.Thu Jul  2 11:55:04 2015
+FDK_EXE="/Users/tonyganch/bin/FDK/Tools/osx"
+PATH=${PATH}:"/Users/tonyganch/bin/FDK/Tools/osx"
+export PATH
+export FDK_EXE
+
 # Ruby/Rails/RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 PATH=$PATH:$HOME/.rvm/bin

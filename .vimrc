@@ -76,6 +76,8 @@ set nocompatible
         Plugin 'ervandew/supertab'
         " Syntax checker
         Plugin 'scrooloose/syntastic'
+        " Tagbar
+        Plugin 'majutsushi/tagbar'
         " Solarized Colorscheme
         Plugin 'altercation/vim-colors-solarized'
         " Show git changes in gutter
@@ -86,6 +88,7 @@ set nocompatible
         Plugin 'tpope/vim-fugitive'
         " Mappings to easily delete, change and add surroundings in pairs
         Plugin 'tpope/vim-surround'
+        Plugin 'cdmedia/itg_flat_vim'
 
     filetype plugin indent on     " required!
 " }}}
@@ -578,10 +581,10 @@ set nocompatible
         syntax enable
         " http://stackoverflow.com/questions/7278267/incorrect-colors-with-vim-in-iterm2-using-solarized#comment11144700_7278548
         let g:solarized_termcolors=16
-        set background=light
+        set background=dark
         " Replace blue background with black
         try
-            colorscheme solarized
+            colorscheme itg_flat
         catch /^Vim\%((\a\+)\)\=:E185/
             echo "Solarized theme not found. Run :BundleInstall"
         endtry
@@ -607,6 +610,9 @@ set nocompatible
 
     " Syntastic
         let g:syntastic_javascript_checkers = ['jshint', 'jscs']
+        let g:syntastic_javascript_jscs_exec = '/Users/tonyganch/.nvm/versions/node/v0.12.4/bin/jscs'
+        let g:syntastic_javascript_jshint_exec = '/Users/tonyganch/.nvm/versions/node/v0.12.4/bin/jshint'
+        let g:syntastic_check_on_open = 1
         no <leader>sc :SyntasticCheck<CR>
 
     " Vim Surround
@@ -628,7 +634,8 @@ set nocompatible
         " let g:airline_section_z = airline#section#create(['windowswap', '%3p%%'.spc, 'linenr', ':%3v '])
         " let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace'])
         function! AirlineInit()
-            let g:airline_section_b = airline#section#create(['hunks'])
+            let g:airline_section_b = ""
+            let g:airline_section_x = ""
             let g:airline_section_y = ""
             let g:airline_section_z = airline#section#create(['%3.3(%c%) : %3.9(%l/%L%)'])
             let g:airline_section_warning = airline#section#create(['syntastic', 'eclim', 'whitespace', '%m'])
@@ -640,5 +647,9 @@ set nocompatible
         " graph.
         let g:gundo_preview_bottom = 1
 "}}}
+
+if filereadable(".vim.custom")
+    so .vim.custom
+endif
 
 " vim:foldmethod=marker:foldlevel=0

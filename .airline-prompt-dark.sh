@@ -42,6 +42,12 @@ function __promptline_ps1 {
   # section "y" slices
   __promptline_wrapper "$(__promptline_vcs_branch)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
+  # section "z" header
+  slice_prefix="${c_bg}${sep}${c_fg}${c_bg}${space}" slice_suffix="$space${c_sep_fg}" slice_joiner="${c_fg}${c_bg}${alt_sep}${space}" slice_empty_prefix="${c_fg}${c_bg}${space}"
+  [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
+  # section "z" slices
+  __promptline_wrapper "$(__promptline_time)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+
   # section "warn" header
   slice_prefix="${warn_bg}${sep}${warn_fg}${warn_bg}${space}" slice_suffix="$space${warn_sep_fg}" slice_joiner="${warn_fg}${warn_bg}${alt_sep}${space}" slice_empty_prefix="${warn_fg}${warn_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
@@ -63,6 +69,11 @@ function __promptline_vcs_branch {
     fi
   fi
   return 1
+}
+function __promptline_time {
+  local time
+  printf "%s" "$(date +"%T")"
+  return
 }
 function __promptline_cwd {
   local dir_limit="3"
@@ -140,6 +151,11 @@ function __promptline_right_prompt {
   # section "y" slices
   __promptline_wrapper "$(__promptline_vcs_branch)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; }
 
+  # section "z" header
+  slice_prefix="${c_sep_fg}${rsep}${c_fg}${c_bg}${space}" slice_suffix="$space${c_sep_fg}" slice_joiner="${c_fg}${c_bg}${alt_rsep}${space}" slice_empty_prefix=""
+  # section "z" slices
+  __promptline_wrapper "$(__promptline_time)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+
   # close sections
   printf "%s" "$reset"
 }
@@ -170,15 +186,18 @@ function __promptline {
   local b_fg="${wrap}38;5;7${end_wrap}"
   local b_bg="${wrap}48;5;11${end_wrap}"
   local b_sep_fg="${wrap}38;5;11${end_wrap}"
+  local b_fg="${wrap}38;5;15${end_wrap}"
+  local b_bg="${wrap}48;5;197${end_wrap}"
+  local b_sep_fg="${wrap}38;5;197${end_wrap}"
   local c_fg="${wrap}38;5;10${end_wrap}"
   local c_bg="${wrap}48;5;0${end_wrap}"
   local c_sep_fg="${wrap}38;5;0${end_wrap}"
   local warn_fg="${wrap}38;5;15${end_wrap}"
-  local warn_bg="${wrap}48;5;9${end_wrap}"
-  local warn_sep_fg="${wrap}38;5;9${end_wrap}"
-  local y_fg="${wrap}38;5;7${end_wrap}"
-  local y_bg="${wrap}48;5;11${end_wrap}"
-  local y_sep_fg="${wrap}38;5;11${end_wrap}"
+  local warn_bg="${wrap}48;5;57${end_wrap}"
+  local warn_sep_fg="${wrap}38;5;57${end_wrap}"
+  local y_fg="${wrap}38;5;240${end_wrap}"
+  local y_bg="${wrap}48;5;190${end_wrap}"
+  local y_sep_fg="${wrap}38;5;190${end_wrap}"
   if [[ -n ${ZSH_VERSION-} ]]; then
     PROMPT="$(__promptline_left_prompt)"
     RPROMPT="$(__promptline_right_prompt)"
