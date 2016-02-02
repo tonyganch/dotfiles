@@ -7,6 +7,11 @@
 " Make Vim more useful
 set nocompatible
 
+" Google plugins
+if filereadable(expand('~/.google.vimrc'))
+  source ~/.google.vimrc
+endif
+
 " Bundles {{{
     " Vundle setup
     " Plugin manager, for more details see :h vundle or
@@ -18,37 +23,15 @@ set nocompatible
 
     " NOTE: comments after Plugin command are not allowed
     " Airline
+        " Airline status bar
+        Plugin 'bling/vim-airline'
         " Airline promptline
         Plugin 'edkolev/promptline.vim'
         " Airline tmux status line
         Plugin 'edkolev/tmuxline.vim'
-        " Airline status bar
-        Plugin 'bling/vim-airline'
-    " CSS
-        " Better CSS indent
-        Plugin 'miripiruni/vim-better-css-indent'
-        " Highlight colors in css files
-        Plugin 'ap/vim-css-color'
-        " CSS3 syntax support
-        Plugin 'hail2u/vim-css3-syntax'
-        " CSScomb
-        Plugin 'csscomb/vim-csscomb'
-        " LESS support
-        Plugin 'groenewege/vim-less'
-        " Stylus support
-        Plugin 'wavded/vim-stylus'
-    " HTML/HAML
-        " HTML5 omnicomplete and syntax
-        Plugin 'othree/html5.vim'
-        " Jade support
-        Plugin 'vim-scripts/jade.vim'
-        " Runtime files for Haml and Sass
-        Plugin 'tpope/vim-haml'
     " JavaScript
         " JSHint
         Plugin 'walm/jshint.vim'
-        " CoffeeScript support
-        Plugin 'kchmck/vim-coffee-script'
         " JSON
         Plugin 'elzr/vim-json'
         " ES6 support
@@ -65,27 +48,23 @@ set nocompatible
         " EditorConfig
         Plugin 'editorconfig/editorconfig-vim'
         " Graphic vim undo tree
-        Plugin 'sjl/gundo.vim'
+        " Plugin 'sjl/gundo.vim'
         " Shows 'Nth match out of M' at every search
         Plugin 'vim-scripts/IndexedSearch'
         " A tree explorer plugin
         Plugin 'scrooloose/nerdtree'
-        " Scala
-        Plugin 'derekwyatt/vim-scala'
         " Perform all your vim insert mode completions with Tab
         Plugin 'ervandew/supertab'
         " Syntax checker
         Plugin 'scrooloose/syntastic'
         " Tagbar
         Plugin 'majutsushi/tagbar'
-        " Solarized Colorscheme
-        Plugin 'altercation/vim-colors-solarized'
         " Show git changes in gutter
-        Plugin 'airblade/vim-gitgutter'
+        " Plugin 'airblade/vim-gitgutter'
         " CtrlSpace
         Plugin 'szw/vim-ctrlspace'
         " Git
-        Plugin 'tpope/vim-fugitive'
+        " Plugin 'tpope/vim-fugitive'
         " Mappings to easily delete, change and add surroundings in pairs
         Plugin 'tpope/vim-surround'
         Plugin 'cdmedia/itg_flat_vim'
@@ -165,7 +144,7 @@ set nocompatible
 " Aligning stuff within window {{{
     " Number of column to be highlighted
     " Only available when compiled with the +syntax feature
-    set colorcolumn=80
+    set colorcolumn=81
 
     " Highlight the screen line of the cursor
     " Only available when compiled with the +syntax feature
@@ -177,7 +156,7 @@ set nocompatible
 
     " Show ↪ at the beginning of wrapped lines
     if has("linebreak")
-        let &sbr = nr2char(8618).' '
+        "let &sbr = nr2char(8618).' '
     endif
 
     " Minimal number of lines to keep above and below the cursor
@@ -216,7 +195,7 @@ set nocompatible
 " Status line {{{
     function! FileSize()
         let bytes = getfsize(expand("%:p"))
-        if bytes <= 0
+         if bytes <= 0
             return ""
         endif
         if bytes < 1024
@@ -227,7 +206,7 @@ set nocompatible
     endfunction
 
     function! CurDir()
-        return expand('%:p:~')
+         return expand('%:p:~')
     endfunction
 
     " Last window always has a status line
@@ -263,6 +242,7 @@ set nocompatible
     " Path to the file
     set statusline+=\ \ CurDir:%{CurDir()}
 " }}}
+
 
 " Folding {{{
     " za = toggle current fold
@@ -434,17 +414,6 @@ set nocompatible
     " ,p
         " Toggle the 'paste' option
         set pastetoggle=<Leader>p
-
-    " ,r
-        " Find and replace in all open buffers
-        " See http://vim.wikia.com/wiki/VimTip382
-        function! Replace()
-            let s:word = input("Replace " . expand('<cword>') . " with:")
-            :exe 'bufdo! %s/\<' . expand('<cword>') . '\>/' . s:word . '/gce'
-            :unlet! s:word
-        endfunction
-        map <Leader>r :call Replace()<CR>
-
     " ,s
         " Shortcut for :%s//
         nnoremap <leader>s :%s//<left>
@@ -476,6 +445,9 @@ set nocompatible
 " }}}
 
 " Other mappings {{{
+    " ; instead of :
+        nmap ; :
+
     " <Esc><Esc>
         " Clear the search highlight in Normal mode
         nnoremap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
@@ -574,6 +546,8 @@ set nocompatible
 
     " Set syntax highlighting for different file types
     autocmd BufRead,BufNewFile *.scala set filetype=scala
+
+    autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 " }}}
 
 " Plugins {{{
@@ -647,9 +621,5 @@ set nocompatible
         " graph.
         let g:gundo_preview_bottom = 1
 "}}}
-
-if filereadable(".vim.custom")
-    so .vim.custom
-endif
 
 " vim:foldmethod=marker:foldlevel=0
