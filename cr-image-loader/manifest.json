@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "Critique Image Loader",
+  "description": "Load images in Critique comments",
+  "version": "1.0",
+
+  "icons": {
+    "128": "panda.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://critique.corp.google.com/*"],
+      "css": ["pandas.css"],
+      "js": ["pandas.js"]
+    }
+  ]
+}
