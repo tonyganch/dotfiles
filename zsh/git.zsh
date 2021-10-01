@@ -10,9 +10,11 @@ alias gl='git log --graph --pretty=format:"%Cgreen%h %Cblue%ar %Creset%s"'
 alias go='git checkout'
 alias gpl='git pull origin `git rev-parse --abbrev-ref HEAD`'
 alias gps='git push origin `git rev-parse --abbrev-ref HEAD`'
+alias gpf='git push --force origin `git rev-parse --abbrev-ref HEAD`'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
 alias gs='git status'
+alias gn='git commit -n -m "nani"'
 
 function gd() {git diff --diff-filter=M -- "$1" | strip_diff | colordiff | less -R}
 function gf() {git commit --fixup="$1"}
