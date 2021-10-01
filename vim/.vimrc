@@ -15,11 +15,11 @@ endif
 " Bundles {{{
     " Vundle setup
     " Plugin manager, for more details see :h vundle or
-    " https://github.com/gmarik/vundle
+    " https://github.com/VundleVim/Vundle.vim
     filetype off     " required!
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
-    Plugin 'gmarik/vundle'
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+    Plugin 'VundleVim/Vundle.vim'
 
     " NOTE: comments after Plugin command are not allowed
     " Airline
@@ -67,8 +67,9 @@ endif
         " Plugin 'tpope/vim-fugitive'
         " Mappings to easily delete, change and add surroundings in pairs
         Plugin 'tpope/vim-surround'
-        Plugin 'cdmedia/itg_flat_vim'
+        Plugin 'chrisdiana/itg_flat_vim'
 
+    call vundle#end()
     filetype plugin indent on     " required!
 " }}}
 
@@ -551,26 +552,12 @@ endif
 " }}}
 
 " Plugins {{{
-    " Solarized
-        syntax enable
-        " http://stackoverflow.com/questions/7278267/incorrect-colors-with-vim-in-iterm2-using-solarized#comment11144700_7278548
-        let g:solarized_termcolors=16
-        set background=dark
-        " Replace blue background with black
-        try
-            colorscheme itg_flat
-        catch /^Vim\%((\a\+)\)\=:E185/
-            echo "Solarized theme not found. Run :BundleInstall"
-        endtry
-
-        try
-            call togglebg#map("<Leader>b")
-        catch /^Vim\%((\a\+)\)\=:E117/
-            " :(
-        endtry
-
+    " Color scheme
+        syntax on
+        colorscheme itg_flat
     " NERDTree
         nmap <Bs> :NERDTreeToggle<CR>
+        let g:NERDTreeNodeDelimiter = "\u00a0"
         let NERDTreeShowBookmarks=1
         let NERDTreeChDirMode=2
         let NERDTreeQuitOnOpen=1
