@@ -1,3 +1,3 @@
-export EDITOR="vim"
+export EDITOR="nvim"
 
-alias v='VIMRUNTIME=$HOME/vim/runtime $HOME/vim/src/vim "$@"'
+alias v='nvim "$@"'
