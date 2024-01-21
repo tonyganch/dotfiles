@@ -15,11 +15,11 @@ endif
 " Bundles {{{
     " Vundle setup
     " Plugin manager, for more details see :h vundle or
-    " https://github.com/gmarik/vundle
+    " https://github.com/VundleVim/Vundle.vim
     filetype off     " required!
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
-    Plugin 'gmarik/vundle'
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+    Plugin 'VundleVim/Vundle.vim'
 
     " NOTE: comments after Plugin command are not allowed
     " Airline
@@ -36,6 +36,11 @@ endif
         Plugin 'elzr/vim-json'
         " ES6 support
         Plugin 'othree/yajs.vim'
+        " Typescript
+        Plugin 'leafgarland/typescript-vim'
+    " Themes
+        Plugin 'chrisdiana/itg_flat_vim'
+        Plugin 'sonph/onehalf', { 'rtp': 'vim' }
     " Other
         " Ag, replace grep and ack
         Plugin 'rking/ag.vim'
@@ -49,8 +54,12 @@ endif
         Plugin 'editorconfig/editorconfig-vim'
         " Graphic vim undo tree
         " Plugin 'sjl/gundo.vim'
+        " Kotlin support
+        Plugin 'udalov/kotlin-vim'
         " Shows 'Nth match out of M' at every search
         Plugin 'vim-scripts/IndexedSearch'
+        " Comments out code
+        Plugin 'preservim/nerdcommenter'
         " A tree explorer plugin
         Plugin 'scrooloose/nerdtree'
         " Perform all your vim insert mode completions with Tab
@@ -60,15 +69,16 @@ endif
         " Tagbar
         Plugin 'majutsushi/tagbar'
         " Show git changes in gutter
-        " Plugin 'airblade/vim-gitgutter'
+        Plugin 'airblade/vim-gitgutter'
         " CtrlSpace
         Plugin 'szw/vim-ctrlspace'
         " Git
         " Plugin 'tpope/vim-fugitive'
         " Mappings to easily delete, change and add surroundings in pairs
         Plugin 'tpope/vim-surround'
-        Plugin 'cdmedia/itg_flat_vim'
+        Plugin 'hashivim/vim-terraform'
 
+    call vundle#end()
     filetype plugin indent on     " required!
 " }}}
 
@@ -180,16 +190,16 @@ endif
     set smartindent
 
     " Number of spaces to use for each step of (auto)indent
-    set shiftwidth=4
+    set shiftwidth=2
 
     " Use spaces instead of tab
     set expandtab
 
     " Number of spaces that a tab counts for
-    set tabstop=4
+    set tabstop=2
 
     " Number of spaces that a tab counts for while performing editing operations
-    set softtabstop=4
+    set softtabstop=2
 " }}}
 
 " Status line {{{
@@ -346,6 +356,8 @@ endif
     " eol       allow backspacing over line breaks (join lines)
     set backspace=indent,eol,start
 
+    set nofixendofline
+
     " Backup и swp files
     " Don't create backups
     set nobackup
@@ -354,7 +366,7 @@ endif
 
     " Load previous session
     " Only available when compiled with the +viminfo feature
-    set viminfo='10,\"100,:20,%,n~/.viminfo
+    " set viminfo='10,\"100,:20,%,n~/.viminfo
     " Set cursor to its last position
     au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 " }}}
@@ -551,26 +563,13 @@ endif
 " }}}
 
 " Plugins {{{
-    " Solarized
-        syntax enable
-        " http://stackoverflow.com/questions/7278267/incorrect-colors-with-vim-in-iterm2-using-solarized#comment11144700_7278548
-        let g:solarized_termcolors=16
-        set background=dark
-        " Replace blue background with black
-        try
-            colorscheme itg_flat
-        catch /^Vim\%((\a\+)\)\=:E185/
-            echo "Solarized theme not found. Run :BundleInstall"
-        endtry
-
-        try
-            call togglebg#map("<Leader>b")
-        catch /^Vim\%((\a\+)\)\=:E117/
-            " :(
-        endtry
-
+    " Color scheme
+        syntax on
+        colorscheme itg_flat
+        " colorscheme onehalfdark
     " NERDTree
         nmap <Bs> :NERDTreeToggle<CR>
+        let g:NERDTreeNodeDelimiter = "\u00a0"
         let NERDTreeShowBookmarks=1
         let NERDTreeChDirMode=2
         let NERDTreeQuitOnOpen=1
@@ -581,6 +580,7 @@ endif
         " Use arrows instead of + ~ chars when displaying directories
         let NERDTreeDirArrows=1
         let NERDTreeBookmarksFile= $HOME . '/.vim/.NERDTreeBookmarks'
+        let NERDTreeWinSize=60
 
     " Syntastic
         let g:syntastic_javascript_checkers = ['jshint', 'jscs']
