@@ -1,3 +1,3 @@
-export EDITOR="nvim"
+export EDITOR="vim"
 
-alias v='nvim "$@"'
+alias v='vim "$@"'
