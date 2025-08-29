@@ -42,6 +42,11 @@ function __promptline_ps1 {
   # section "y" slices
   __promptline_wrapper "$(__promptline_vcs_branch)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
+  slice_prefix="${y_bg}${sep}${y_fg}${y_bg}${space}" slice_suffix="$space${y_sep_fg}" slice_joiner="${y_fg}${y_bg}${alt_sep}${space}" slice_empty_prefix="${y_fg}${y_bg}${space}"
+  [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
+  # section "y" slices
+  __promptline_wrapper "$(__promptline_kubeconfig)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+
   # section "z" header
   slice_prefix="${c_bg}${sep}${c_fg}${c_bg}${space}" slice_suffix="$space${c_sep_fg}" slice_joiner="${c_fg}${c_bg}${alt_sep}${space}" slice_empty_prefix="${c_fg}${c_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
@@ -69,6 +74,14 @@ function __promptline_vcs_branch {
     fi
   fi
   return 1
+}
+function __promptline_kubeconfig {
+  config="$KUBECONFIG"
+  config=${config/#"${HOME}\/.kube\/drpc-gke-prod-"}
+  config=${config/#"${HOME}\/.kube\/drpc-"}
+  config=${config%".yaml"}
+  printf "%s" "${config}"
+  return
 }
 function __promptline_time {
   local time
@@ -144,6 +157,11 @@ function __promptline_right_prompt {
   slice_prefix="${y_sep_fg}${rsep}${y_fg}${y_bg}${space}" slice_suffix="$space${y_sep_fg}" slice_joiner="${y_fg}${y_bg}${alt_rsep}${space}" slice_empty_prefix=""
   # section "y" slices
   __promptline_wrapper "$(__promptline_vcs_branch)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; }
+
+
+  slice_prefix="${c_sep_fg}${rsep}${c_fg}${c_bg}${space}" slice_suffix="$space${c_sep_fg}" slice_joiner="${c_fg}${c_bg}${alt_rsep}${space}" slice_empty_prefix=""
+  # section "y" slices
+  __promptline_wrapper "$(__promptline_kubeconfig)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; }
 
   # section "z" header
   slice_prefix="${c_sep_fg}${rsep}${c_fg}${c_bg}${space}" slice_suffix="$space${c_sep_fg}" slice_joiner="${c_fg}${c_bg}${alt_rsep}${space}" slice_empty_prefix=""
